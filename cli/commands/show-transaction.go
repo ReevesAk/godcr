@@ -59,7 +59,6 @@ func (showTxCommand ShowTransactionCommand) Run(ctx context.Context, wallet wall
 		dcrutil.Amount(transaction.FeeRate).String(),
 	)
 
-<<<<<<< HEAD
 	// calculate max number of digits after decimal point for inputs and outputs
 	inputsAndOutputsAmount := make([]int64, 0, len(transaction.Inputs)+len(transaction.Outputs))
 	for _, txIn := range transaction.Inputs {
@@ -69,20 +68,6 @@ func (showTxCommand ShowTransactionCommand) Run(ctx context.Context, wallet wall
 		inputsAndOutputsAmount = append(inputsAndOutputsAmount, txOut.Amount)
 	}
 	maxDecimalPlacesForInputsAndOutputsAmounts := godcrUtils.MaxDecimalPlaces(inputsAndOutputsAmount)
-=======
-	if showTxCommand.Detailed {
-		detailedOutput := strings.Builder{}
-		detailedOutput.WriteString("Transaction Details\n")
-		detailedOutput.WriteString(basicOutput)
-		detailedOutput.WriteString("Inputs \t \n")
-		for _, input := range transaction.Inputs {
-			inputAmount := dcrutil.Amount(input.Amount).String()
-			detailedOutput.WriteString(fmt.Sprintf("  %s \t %s  (%s)\n", inputAmount, input.PreviousOutpoint, input.AccountName))
-		}
-		detailedOutput.WriteString("Outputs \t \n") // add tabs to maintain tab spacing for previous inputs section and next outputs section
-		for _, out := range transaction.Outputs {
-			outputAmount := dcrutil.Amount(out.Amount).String()
->>>>>>> Accountname for transaction inputs
 
 	// now format amount having determined the max number of decimal places
 	formatAmount := func(amount int64) string {
@@ -142,4 +127,4 @@ func (showTxCommand ShowTransactionCommand) Run(ctx context.Context, wallet wall
 	}
 
 	return nil
-  }
+}
