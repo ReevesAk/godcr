@@ -142,4 +142,4 @@ func (showTxCommand ShowTransactionCommand) Run(ctx context.Context, wallet wall
 	}
 
 	return nil
-}
+  }
